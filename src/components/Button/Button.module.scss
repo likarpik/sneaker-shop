@@ -1,0 +1,31 @@
+.button {
+    width: 325px;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    color: white;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+
+    .arrow {
+        width: 18px;
+        height: 18px;
+    }
+
+    .arrow__right {
+        margin-left: 20px;
+    }
+}
+
+.green {
+    background-color: #9DD558;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}

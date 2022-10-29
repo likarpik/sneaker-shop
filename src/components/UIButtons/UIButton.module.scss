@@ -1,0 +1,37 @@
+.ui_button {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    .ui_button__icon__heart svg {
+        fill: #FF8585;
+    }
+
+    &:hover {
+        .ui_button__icon__heart svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
+
+.ui_button__green {
+    background: linear-gradient(180deg, #89F09C 0%, #3CC755 100%);
+}
+
+.ui_button__red {
+    background-color: #FEF0F0;
+}
+
+.ui_button__white {
+    background: #FFFFFF;
+    border: 1px solid #F2F2F2;
+
+    &:hover {
+        background: #f7f6f6;
+    }
+}
+

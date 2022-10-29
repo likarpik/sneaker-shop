@@ -1,0 +1,29 @@
+button {
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    background-color: inherit;
+}
+
+.App {
+    .body {
+        margin-bottom: 40px;
+
+        .label_all_goods {
+            margin: 40px 0px 40px 40px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 39px;
+        }
+
+        .goods {
+            margin-left: 60px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 80px;
+        }
+    }
+}

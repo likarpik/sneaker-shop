@@ -1,0 +1,108 @@
+.basket_overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: flex;
+    justify-content: flex-end;
+    // visibility: hidden;
+    // opacity: 0;
+    transition: opacity 0.1s ease-out, visibility 0.1s ease-out;
+    overflow: hidden;
+
+    .basket {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 375px;
+        background: #FFFFFF;
+        box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+
+        .basket_header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-content: center;
+            
+            .basket_close_button {
+                width: 15px;
+                height: 15px;
+                position: relative;
+                top: 7px;
+                cursor: pointer;
+
+                &:hover {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+        }
+
+        .basket_all_items {
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+
+            .basket_item {
+                padding: 20px;
+                border: 1px solid #F3F3F3;
+                border-radius: 20px;
+                margin-top: 20px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-content: center;
+            
+                .basket_item_img {
+                    position: relative;
+                    top: -10px;
+                    width: 70px;
+                    height: 70px;
+                }
+            
+                .basket_item_description {
+                    width: 170px;
+                    margin-left: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                }
+            
+                .basket_item_del_but {
+                    margin-left: 10px;
+                    position: relative;
+                    top: 15px;
+                }
+            }
+        }
+
+        .basket_total {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 25px;
+            
+            .basket_total_item {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin-top: 20px;
+
+                .basket_total_dash {
+                    position: relative;
+                    bottom: 3px;
+                    width: 167px;
+                    border-bottom: 1px dashed #DFDFDF;
+                }
+            }
+        }
+
+        .basket_button {
+            align-self: center;
+        }
+    }
+}
