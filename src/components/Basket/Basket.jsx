@@ -16,7 +16,7 @@ export default function Basket({basketItems=[], onDeleteItem, onCloseBasket}) {
                 </div>
                 <div className={styles.basket_all_items}>
                     {basketItems.map(item => 
-                        <div className={styles.basket_item}>
+                        <div key={item.id} className={styles.basket_item}>
                             <img className={styles.basket_item_img} src={item.img} alt={item.alt} />
                             <div className={styles.basket_item_description}>
                                 <div>{item.title}</div>

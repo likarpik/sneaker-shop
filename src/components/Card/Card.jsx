@@ -4,7 +4,7 @@ import styles from './Card.module.scss';
 import UIButton from '../UIButtons/UIButton';
 import { useState } from 'react';
 
-export default function Card({id, title, img, alt, cost, basketItems, setBasketItems}) {
+export default function Card({id, title, img, alt, cost, basketItems, setBasketItems, onDeleteItem}) {
     
     const [favourite, setFavourite] = useState(false);
     const [isAddedToCart, setIsAddedToCart] = useState(false);
@@ -26,6 +26,8 @@ export default function Card({id, title, img, alt, cost, basketItems, setBasketI
         
         if (!isAddedToCart) {
             setBasketItems([...basketItems, obj]);
+        } else {
+            onDeleteItem(obj.id)
         }
     }
 

@@ -34,8 +34,9 @@ function App() {
         <div className="label_all_goods">Все кроссовки</div>
         <div className="goods">
           {
-            goods.map((item, i) => <Card key={i} id={i} cost={item.cost} title={item.title} alt={item.alt} img={item.img} 
+            goods.map((item, i) => <Card key={item.id} id={i} cost={item.cost} title={item.title} alt={item.alt} img={item.img} 
                                     basketItems={basketItems} setBasketItems={setBasketItems}
+                                    onDeleteItem={onDeleteItem}
                               />)
           }
         </div>
