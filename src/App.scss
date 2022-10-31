@@ -8,14 +8,56 @@ button {
 .App {
     .body {
         margin-bottom: 40px;
+        
+        .all_goods {
+            display: flex;
+            flex-direction: row;
+            margin: 70px;
+            justify-content: space-between;
+            align-content: center;
+            
+            .all_goods_label { 
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 32px;
+                line-height: 39px;
+            }
 
-        .label_all_goods {
-            margin: 40px 0px 40px 40px;
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 32px;
-            line-height: 39px;
+            .all_goods_search {
+                display: flex;
+                flex-direction: row;
+                align-content: center;
+
+                & > input {
+                    width: 220px;
+                    height: 45px;
+                    border: 1px solid #F3F3F3;
+                    border-radius: 10px;
+                    padding-left: 50px;
+                    outline: none;
+                    color: #C4C4C4;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 17px;
+                }
+
+                .all_goods_img_search {
+                    width: 18px;
+                    height: 18px;
+                    position: relative;
+                    right: -40px;
+                    top: 15px;
+                }
+
+                .all_goods_img_delete {
+                    width: 12px;
+                    height: 12px;
+                    position: relative;
+                    left: 250px;
+                    top: 17px;
+                }
+            }
         }
 
         .goods {
