@@ -2,14 +2,25 @@ import './App.scss';
 import Header from './components/Header/Header';
 import Card from './components/Card/Card';
 import Basket from './components/Basket/Basket';
-import goods from './data/goods';
-import { useState } from 'react';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 function App() {
 
   const [basketOpened, setBasketOpened] = useState(false);
   const [basketItems, setBasketItems] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+  const [goods, setGoods] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://63615888af66cc87dc29c2a1.mockapi.io/sneaker/shop/goods').then((res) => {
+      setGoods(res.data);
+    });
+
+    axios.get('https://63615888af66cc87dc29c2a1.mockapi.io/sneaker/shop/cart').then((res) => {
+      setBasketItems(res.data);
+    });
+  }, []);
 
   const openBasket = () => {
     setBasketOpened(true);
@@ -22,6 +33,7 @@ function App() {
   }
 
   const onDeleteItem = (id) => {
+    axios.delete(`https://63615888af66cc87dc29c2a1.mockapi.io/sneaker/shop/cart/${id}`);
     setBasketItems((prev) => prev.filter((item) => Number(item.id) !== Number(id)));
   }
 

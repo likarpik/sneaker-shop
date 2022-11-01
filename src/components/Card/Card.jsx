@@ -3,6 +3,7 @@ import cn from 'classnames';
 import styles from './Card.module.scss';
 import UIButton from '../UIButtons/UIButton';
 import { useState } from 'react';
+import axios from 'axios';
 
 export default function Card({id, title, img, alt, cost, basketItems, setBasketItems, onDeleteItem}) {
     
@@ -25,6 +26,7 @@ export default function Card({id, title, img, alt, cost, basketItems, setBasketI
         setIsAddedToCart(!isAddedToCart);
         
         if (!isAddedToCart) {
+            axios.post('https://63615888af66cc87dc29c2a1.mockapi.io/sneaker/shop/cart', obj);
             setBasketItems([...basketItems, obj]);
         } else {
             onDeleteItem(obj.id)
