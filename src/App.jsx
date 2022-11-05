@@ -1,9 +1,10 @@
 import './App.scss';
-import Header from './components/Header/Header';
-import Card from './components/Card/Card';
-import Basket from './components/Basket/Basket';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Header from './components/Header/Header';
+import Basket from './components/Basket/Basket';
+import Home from './pages/Home';
 
 function App() {
 
@@ -59,31 +60,25 @@ function App() {
   return (
     <div className="App">
       {basketOpened && <Basket onCloseBasket={() => closeBasket()} 
-                                basketItems={basketItems} setBasketItems={setBasketItems}
-                                onDeleteItem={onDeleteItem}/>}
+                                      basketItems={basketItems} 
+                                      setBasketItems={setBasketItems}
+                                      onDeleteItem={onDeleteItem}/>}
       <Header onClickCart={() => openBasket()} />
-      <div className="body">
-        <div className="all_goods">
-          {searchValue ? <div className="all_goods_label">Поиск по запросу: {searchValue}</div> 
-                      : <div className="all_goods_label">Все кроссовки</div>}
-          <div className="all_goods_search">
-            <img className="all_goods_img_search" src="/img/search.svg" alt="Search" />
-            {searchValue && <img className="all_goods_img_delete" src="/img/close.png" alt="Delete" onClick={() => setSearchValue('')}/>}
-            <input type="text" onChange={onChangeInput} value={searchValue} placeholder="Поиск..."/>
-          </div>
-        </div>
-        <div className="goods">
-          {
-            goods
-            .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-            .map((item, i) => <Card key={item.id} id={item.id} cost={item.cost} title={item.title} alt={item.alt} img={item.img} 
-                                    basketItems={basketItems} setBasketItems={setBasketItems}
-                                    onDeleteItem={onDeleteItem}
-                                    favourites={favourites} setFavourites={setFavourites}
-                              />)
-          }
-        </div>
-      </div>
+      
+      <Routes>
+        <Route path="/" exact element={
+          <Home basketItems={basketItems}
+                favourites={favourites}
+                searchValue={searchValue}
+                goods={goods}
+                onDeleteItem={onDeleteItem}
+                onChangeInput={onChangeInput}
+                setBasketItems={setBasketItems}
+                setFavourites={setFavourites}
+                setSearchValue={setSearchValue}/>
+          }>
+        </Route>
+      </Routes>
     </div>
   );
 }

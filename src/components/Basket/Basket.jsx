@@ -26,7 +26,7 @@ export default function Basket({basketItems=[], onDeleteItem, onCloseBasket}) {
                                 </div>
                                 <UIButton className={styles.basket_item_del_but} color="white" icon="Cross" 
                                 choosedAction="Delete"
-                                onClickDel={() => onDeleteItem(item.id)}/>
+                                onClickDel={() => onDeleteItem(item.id, 'basket')}/>
                             </div>
                         )}
                     </div>
