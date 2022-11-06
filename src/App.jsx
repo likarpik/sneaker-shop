@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Basket from './components/Basket/Basket';
 import Home from './pages/Home';
+import Favourites from './pages/Favourites';
 
 function App() {
 
@@ -76,6 +77,15 @@ function App() {
                 setBasketItems={setBasketItems}
                 setFavourites={setFavourites}
                 setSearchValue={setSearchValue}/>
+          }>
+        </Route>
+        <Route path="/favourites" exact element={
+          <Favourites basketItems={basketItems}
+                favourites={favourites}
+                onDeleteItem={onDeleteItem}
+                onChangeInput={onChangeInput}
+                setBasketItems={setBasketItems}
+                setFavourites={setFavourites}/>
           }>
         </Route>
       </Routes>

@@ -2,8 +2,20 @@
 
 * {
     font-family: Inter;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
 }
 
 body {
     height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color:black;
+}
+
+li {
+    list-style: none;
 }

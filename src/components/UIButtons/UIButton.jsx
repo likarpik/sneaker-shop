@@ -1,14 +1,14 @@
 import React from 'react';
 import cn from 'classnames';
 import styles from './UIButton.module.scss';
-import {ReactComponent as HeartIcon} from './img/heart.svg';
+import {ReactComponent as HeartIcon} from './img/border_heart.svg';
 import {ReactComponent as PlusIcon} from './img/plus.svg';
 import {ReactComponent as DoneIcon} from './img/done.svg';
 import {ReactComponent as CrossIcon} from './img/cross.svg';
-import {ReactComponent as BorderHeart} from './img/border_heart.svg';
+import {ReactComponent as BorderHeart} from './img/heart.svg';
 
 export default function UIButton({icon, color, choosedAction, onClickAddToCart, onClickFavourite, onClickDel, ...props}) {
-    let renderIcon = (icn) => {
+    const renderIcon = (icn) => {
         switch(icn) {
             case "RedHeart":
                 return <HeartIcon />
@@ -48,7 +48,7 @@ export default function UIButton({icon, color, choosedAction, onClickAddToCart, 
             onClick={isChoosed(choosedAction)}
         >
         <span className={cn(styles.ui_button__icon, {
-            [styles.ui_button__icon__heart]: icon === "RedHeart"
+            [styles.ui_button__icon__redheart]: icon === "RedHeart"
         })}>
             { renderIcon(icon) }
         </span>

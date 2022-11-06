@@ -6,12 +6,12 @@
     align-items: center;
     cursor: pointer;
 
-    .ui_button__icon__heart svg {
+    .ui_button__icon__redheart svg {
         fill: #FF8585;
     }
 
     &:hover {
-        .ui_button__icon__heart svg {
+        .ui_button__icon__redheart svg {
             width: 16px;
             height: 16px;
         }

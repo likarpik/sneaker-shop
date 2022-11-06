@@ -11,6 +11,7 @@ export default function Home ({
     setFavourites,
     setSearchValue
 }) {
+    
     return (
         <div className="body">
             <div className="all_goods">
@@ -26,12 +27,8 @@ export default function Home ({
             {
                 goods
                 .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-                .map((item, i) => <Card key={item.id} 
-                                        id={item.id} 
-                                        cost={item.cost} 
-                                        title={item.title} 
-                                        alt={item.alt} 
-                                        img={item.img} 
+                .map((item) => <Card key={item.id} 
+                                        {...item}
                                         basketItems={basketItems} 
                                         setBasketItems={setBasketItems}
                                         onDeleteItem={onDeleteItem}

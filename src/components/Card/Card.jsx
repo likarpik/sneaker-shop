@@ -5,9 +5,9 @@ import UIButton from '../UIButtons/UIButton';
 import { useState } from 'react';
 import axios from 'axios';
 
-export default function Card({id, title, img, alt, cost, basketItems, setBasketItems, onDeleteItem, favourites, setFavourites}) {
+export default function Card({id, title, img, alt, cost, basketItems, setBasketItems, onDeleteItem, favourites, setFavourites, isFavourite=false}) {
     
-    const [favourite, setFavourite] = useState(false);
+    const [favourite, setFavourite] = useState(isFavourite);
     const [isAddedToCart, setIsAddedToCart] = useState(false);
     
     const cardObj = {
@@ -18,12 +18,12 @@ export default function Card({id, title, img, alt, cost, basketItems, setBasketI
         cost: cost
     };
 
-    const changeFavouriteButton = (obj) => {
+    const changeFavouriteButton = async (obj) => {
         setFavourite(!favourite);
 
         if (!favourite) {
-            axios.post('https://63615888af66cc87dc29c2a1.mockapi.io/sneaker/shop/favorites', obj);
-            setFavourites([...favourites, obj]);
+            const {data} = await axios.post('https://63615888af66cc87dc29c2a1.mockapi.io/sneaker/shop/favorites', obj);
+            setFavourites([...favourites, data]);
         } else {
             onDeleteItem(obj.id, 'favourites');
         }
@@ -32,11 +32,15 @@ export default function Card({id, title, img, alt, cost, basketItems, setBasketI
     const changeAddedButton = (obj) => {
         setIsAddedToCart(!isAddedToCart);
         
-        if (!isAddedToCart) {
-            axios.post('https://63615888af66cc87dc29c2a1.mockapi.io/sneaker/shop/cart', obj);
-            setBasketItems([...basketItems, obj]);
-        } else {
-            onDeleteItem(obj.id, 'basket');
+        try {
+            if (!isAddedToCart) {
+                axios.post('https://63615888af66cc87dc29c2a1.mockapi.io/sneaker/shop/cart', obj);
+                setBasketItems([...basketItems, obj]);  
+            } else {
+                onDeleteItem(obj.id, 'basket');
+            }
+        } catch (err) {
+            console.log(err);
         }
     }
 
