@@ -6,12 +6,14 @@ import Header from './components/Header/Header';
 import Basket from './components/Basket/Basket';
 import Home from './pages/Home';
 import Favourites from './pages/Favourites';
+import Orders from './pages/Orders';
 
 function App() {
 
   const [basketOpened, setBasketOpened] = useState(false);
   const [basketItems, setBasketItems] = useState([]);
   const [favourites, setFavourites] = useState([]);
+  const [orders, setOrders] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [goods, setGoods] = useState([]);
 
@@ -83,9 +85,16 @@ function App() {
           <Favourites basketItems={basketItems}
                 favourites={favourites}
                 onDeleteItem={onDeleteItem}
-                onChangeInput={onChangeInput}
                 setBasketItems={setBasketItems}
                 setFavourites={setFavourites}/>
+          }>
+        </Route>
+        <Route path="/orders" exact element={
+          <Orders basketItems={basketItems}
+                onDeleteItem={onDeleteItem}
+                setBasketItems={setBasketItems}
+                orders={orders}
+                setOrders={setOrders}/>
           }>
         </Route>
       </Routes>

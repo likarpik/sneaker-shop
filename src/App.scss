@@ -60,14 +60,14 @@ button {
             }
         }
 
-        .favourites_goods {
+        .page_goods {
             display: flex;
             flex-direction: row;
             margin: 70px;
             gap: 20px;
             align-content: center;
 
-            .favourites_goods_label { 
+            .page_goods_label { 
                 font-family: 'Inter';
                 font-style: normal;
                 font-weight: 700;

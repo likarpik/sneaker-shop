@@ -25,7 +25,9 @@ export default function Header({onClickCart}) {
               <Link to="/favourites">
                 <li><img src={Heart} alt="Favorites" /></li>
               </Link>
-              <li><img src={Profile} alt="Profile" /></li>
+              <Link to="/orders">
+                <li><img src={Profile} alt="Profile" /></li>
+              </Link>
           </ul>
         </nav>
     </header>

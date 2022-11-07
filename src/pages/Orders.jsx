@@ -2,36 +2,34 @@ import { Link } from 'react-router-dom';
 import Card from '../components/Card/Card';
 import Button from '../components/Button/Button';
 import Return from './return.png';
-import EmptyFavourites from './favourites_empty.png';
+import EmptyOrders from './orders_empty.png';
 
-export default function Favourites ({
+export default function Orders ({
     basketItems,
-    favourites,
+    orders,
     onDeleteItem,
     setBasketItems,
-    setFavourites
+    setOrders
 }) {
 
     return (
         <div className="body">
             {
-                favourites.length > 0 ? 
+                orders.length > 0 ? 
                 <>
                     <div className="page_goods">
                         <Link to="/">
                             <img className="page_goods_return" src={Return} alt="Return"/>
                         </Link>
-                        <div className="page_goods_label">Мои закладки</div>
+                        <div className="page_goods_label">Мои покупки</div>
                     </div>
                     <div className="goods">
                     {
-                        favourites.map((item) => <Card key={item.id}
+                        orders.map((item) => <Card key={item.id}
                                                 {...item} 
                                                 basketItems={basketItems} 
                                                 setBasketItems={setBasketItems}
                                                 onDeleteItem={onDeleteItem}
-                                                favourites={favourites} 
-                                                setFavourites={setFavourites}
                                                 isFavourite={true}
                                         />)
                     }
@@ -39,9 +37,9 @@ export default function Favourites ({
                 </>
                 :
                 <div className="page_empty">
-                    <img src={EmptyFavourites} alt="Favourites are empty" />
-                    <h3>Закладок нет</h3>
-                    <p>Вы ничего не добавляли в закладки</p>
+                    <img src={EmptyOrders} alt="Orders are empty" />
+                    <h3>У вас нет заказов</h3>
+                    <p>Оформите хотя бы один заказ.</p>
                     <Link to="/">
                         <Button appearance="green" arrow="left" text="Вернуться назад" stylesForButton="basket_button"/>
                     </Link>
