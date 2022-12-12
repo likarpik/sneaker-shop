@@ -18,17 +18,16 @@ function App() {
   const [goods, setGoods] = useState([]);
 
   useEffect(() => {
-    axios.get('https://63615888af66cc87dc29c2a1.mockapi.io/sneaker/shop/goods').then((res) => {
-      setGoods(res.data);
-    });
+    async function fetchData() {
+      const goodsResult = await axios.get('https://63615888af66cc87dc29c2a1.mockapi.io/sneaker/shop/goods');
+      const favouritesResult = await axios.get('https://63615888af66cc87dc29c2a1.mockapi.io/sneaker/shop/favorites');
+      const basketResult = await axios.get('https://63615888af66cc87dc29c2a1.mockapi.io/sneaker/shop/cart');
 
-    axios.get('https://63615888af66cc87dc29c2a1.mockapi.io/sneaker/shop/cart').then((res) => {
-      setBasketItems(res.data);
-    });
-
-    axios.get('https://63615888af66cc87dc29c2a1.mockapi.io/sneaker/shop/favorites').then((res) => {
-      setFavourites(res.data);
-    });
+      setBasketItems(basketResult.data);
+      setFavourites(favouritesResult.data);
+      setGoods(goodsResult.data);
+    }
+    fetchData();
   }, []);
 
   const openBasket = () => {
