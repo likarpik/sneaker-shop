@@ -5,10 +5,10 @@ import UIButton from '../UIButtons/UIButton';
 import { useState } from 'react';
 import axios from 'axios';
 
-export default function Card({id, title, img, alt, cost, basketItems, setBasketItems, onDeleteItem, favourites, setFavourites, isFavourite=false}) {
+export default function Card({id, title, img, alt, cost, basketItems, setBasketItems, onDeleteItem, favourites, setFavourites, isFavourite=false, isAdded=false}) {
     
     const [favourite, setFavourite] = useState(isFavourite);
-    const [isAddedToCart, setIsAddedToCart] = useState(false);
+    const [isAddedToCart, setIsAddedToCart] = useState(isAdded);
     
     const cardObj = {
         id: id,
@@ -21,11 +21,15 @@ export default function Card({id, title, img, alt, cost, basketItems, setBasketI
     const changeFavouriteButton = async (obj) => {
         setFavourite(!favourite);
 
-        if (!favourite) {
-            const {data} = await axios.post('https://63615888af66cc87dc29c2a1.mockapi.io/sneaker/shop/favorites', obj);
-            setFavourites([...favourites, data]);
-        } else {
-            onDeleteItem(obj.id, 'favourites');
+        try {
+            if (!favourite) {
+                const {data} = await axios.post('https://63615888af66cc87dc29c2a1.mockapi.io/sneaker/shop/favorites', obj);
+                setFavourites([...favourites, data]);
+            } else {
+                onDeleteItem(obj.id, 'favourites');
+            }
+        } catch (err) {
+            console.log(err);
         }
     }
 

@@ -11,7 +11,6 @@ export default function Home ({
     setFavourites,
     setSearchValue
 }) {
-    
     return (
         <div className="body">
             <div className="all_goods">
@@ -34,6 +33,8 @@ export default function Home ({
                                         onDeleteItem={onDeleteItem}
                                         favourites={favourites} 
                                         setFavourites={setFavourites}
+                                        isFavourite={favourites.some(fav => Number(fav.id) === Number(item.id))}
+                                        isAdded={basketItems.some(bask_item => Number(bask_item.id) === Number(item.id))}
                                 />)
             }
             </div>
